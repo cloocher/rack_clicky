@@ -4,14 +4,14 @@ module Rack
   class Clicky
 
     TRACKING_CODE = <<-EOTC 
-    <script src="http://static.getclicky.com/js" type="text/javascript"></script>
+    <script src="https://static.getclicky.com/js" type="text/javascript"></script>
     <script type="text/javascript">clicky.init({{CODE}});</script>
     <noscript><p><img alt="Clicky" width="1" height="1" src="http://in.getclicky.com/{{CODE}}ns.gif" /></p></noscript>
     EOTC
 
-    def initialize app, site_id, options={}
+    def initialize app, options={}
       @app = app
-      @site_id = site_id
+      @site_id = options[:site_id]
     end
 
     def call env
